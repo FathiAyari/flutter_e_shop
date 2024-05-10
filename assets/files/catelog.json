@@ -1,0 +1,21 @@
+{
+  "products": [
+
+    {
+      "id": 7,
+      "name": "Galaxy S21",
+      "desc": "Samsung Galaxy S21 2021 edition",
+      "price": 899,
+      "color": "#7c95eb",
+      "image": "https://images.samsung.com/is/image/samsung/p6pim/za/galaxy-s21/gallery/za-clear-cover-galaxy-s21-5g-ef-qg991ttegww-363168624?$720_576_PNG$"
+    },
+    {
+      "id": 8,
+      "name": "I Phone 14",
+      "desc": "I Phone 14 2024 edition",
+      "price": 3233,
+      "color": "#7c95eb",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUGeenbJRofOq1uDyacdPBsLT7K_GejUhQ-DWBuSqr5g&s"
+    }
+  ]
+}
