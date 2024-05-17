@@ -58,7 +58,7 @@ class CatelogItem extends StatelessWidget {
               buttonPadding: EdgeInsets.zero,
               children: [
                 '\$${catelog.price}'.text.bold.xl.make(),
-                AddToCart(catelog: catelog),
+                AddToCart(isCehcked: false, catelog: catelog),
               ],
             ).pOnly(right: 8.0)
           ],

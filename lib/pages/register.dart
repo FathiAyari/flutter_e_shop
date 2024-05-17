@@ -1,49 +1,53 @@
-import 'package:e_shopp/pages/register.dart';
+import 'package:e_shopp/models/snack_bar_types.dart';
 import 'package:e_shopp/pages/snack_bar.dart';
 import 'package:e_shopp/services/AuthServices.dart';
 import 'package:flutter/material.dart';
 
-import '../models/snack_bar_types.dart';
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
-class LoginPage extends StatefulWidget {
-  // const LoginPage({Key? key}) : super(key: key);
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterState extends State<Register> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController lastName = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  setData() {
+    setState(() {
+      email.text = "tet@gmail.com";
+      password.text = "testtest";
+      name.text = "tet@gmail.com";
+      lastName.text = "tet@gmail.com";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(
-                height: 50.0,
-              ),
-              Image.asset(
-                "assets/images/login_image.png",
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
               Text(
-                'Welcome',
+                'Regitser',
                 style: TextStyle(
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
@@ -52,11 +56,51 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextFormField(
+                        controller: name,
+                        decoration: InputDecoration(filled: true, labelText: 'Name', fillColor: Colors.purple.withOpacity(0.2)),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "name cannot be null";
+                          }
+
+                          return null;
+                        },
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: TextFormField(
+                        controller: lastName,
+                        decoration:
+                            InputDecoration(filled: true, labelText: 'Last Name', fillColor: Colors.purple.withOpacity(0.2)),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "last name cannot be null";
+                          }
+
+                          return null;
+                        },
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: TextFormField(
                         controller: email,
                         decoration: InputDecoration(filled: true, labelText: 'Email', fillColor: Colors.purple.withOpacity(0.2)),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "email cannot be null";
+                          }
+                          bool emailValid =
+                              RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                          if (!emailValid) {
+                            return "invalide email format";
                           }
                           return null;
                         },
@@ -78,7 +122,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Password cannot be null";
+                            return "Password length must be more thans 6";
+                          }
+                          if (value.length < 6) {
+                            return "Password length must be more thans 6";
                           }
                           return null;
                         },
@@ -102,7 +149,11 @@ class _LoginPageState extends State<LoginPage> {
                                   setState(() {
                                     changeButton = true;
                                   });
-                                  AuthServices().signIn(email.text, password.text).then((value) async {
+
+                                  AuthServices()
+                                      .signUp(
+                                          email: email.text, password: password.text, name: name.text, lastName: lastName.text)
+                                      .then((value) async {
                                     if (value) {
                                       AuthServices().getUserData().then((value) {
                                         AuthServices().saveUserLocally(value).then((value2) {
@@ -111,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                                       });
                                     } else {
                                       SnackBars(
-                                              label: "Check email and password",
+                                              label: "Check email and password or the email is alreeady used",
                                               type: SnackBarsTypes.alert,
                                               onTap: () {},
                                               actionLabel: "Close",
@@ -139,48 +190,6 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Register()));
-                          },
-                          child: Text.rich(
-                            textAlign: TextAlign.center,
-                            TextSpan(
-                              text: "You don't have an account ? \n", // Display text excluding clickableText
-                              children: [
-                                TextSpan(
-                                  text: "Create account",
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.blue,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ) /*Row(
-                          children: [
-                            Text("You don't have an account ?"),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: InkWell(
-                                    onTap: () {},
-                                    child: Text(
-                                      "Create account",
-                                      style: TextStyle(color: Colors.purple),
-                                    )),
-                              ),
-                            )
-                          ],
-                        )*/
-                        ,
-                      ),
-                    ),
                   ],
                 ),
               )

@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  firebase_core: ^2.25.5 # l'utilisation des services firebase
+  cloud_firestore: ^4.15.6 # gestion de donnée avec firebase
+  firebase_auth: ^4.17.6 # gestion d'authentification avec firebase
+  get_storage: ^2.1.1 # gestion de stockage local
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

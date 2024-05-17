@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart' as GGfont;
 import 'package:provider/provider.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.system;
+  var storage = GetStorage();
 
   bool get isDarkMode {
     if (themeMode == ThemeMode.system) {
@@ -18,6 +20,7 @@ class ThemeProvider extends ChangeNotifier {
 
   void toggleTheme(bool isOn) {
     themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+
     notifyListeners();
   }
 }
@@ -67,9 +70,8 @@ class Mytheme {
         fontFamily: GGfont.GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
-
-        buttonTheme: ButtonThemeData(buttonColor:darkBluishColor),
-    colorScheme: ColorScheme.fromSwatch(accentColor:darkBluishColor ),
+        buttonTheme: ButtonThemeData(buttonColor: darkBluishColor),
+        colorScheme: ColorScheme.fromSwatch(accentColor: darkBluishColor),
         appBarTheme: AppBarTheme(
           color: Colors.white,
           elevation: 0.0,
@@ -77,12 +79,14 @@ class Mytheme {
         ),
       );
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-
         fontFamily: GGfont.GoogleFonts.poppins().fontFamily,
         cardColor: Color(0xff090B0F),
         canvasColor: darkColor,
-    buttonTheme: ButtonThemeData(buttonColor:darkBluishColor),
-    colorScheme: ColorScheme.fromSwatch(accentColor:darkBluishColor ,  brightness: Brightness.dark,),
+        buttonTheme: ButtonThemeData(buttonColor: darkBluishColor),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: darkBluishColor,
+          brightness: Brightness.dark,
+        ),
         appBarTheme: AppBarTheme(
           color: Colors.white,
           elevation: 0.0,

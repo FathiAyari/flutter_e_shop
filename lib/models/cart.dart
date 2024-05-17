@@ -21,8 +21,7 @@ class CartModel {
   List<Item> get items => _itemIds.map((id) => _catelog.getById(id!)).toList();
 
   // Get total price
-  num get totalPrice =>
-      items.fold(0, (total, current) => total + current.price);
+  num get totalPrice => items.fold(0, (total, current) => total + current.price);
 }
 
 class AddMutation extends VxMutation<MyStore> {
@@ -31,7 +30,7 @@ class AddMutation extends VxMutation<MyStore> {
   AddMutation(this.item);
   @override
   perform() {
-    store!.cart!._itemIds.add(item!.id);
+    //store!.cart!._itemIds.add(item!.id);
   }
 }
 

@@ -1,21 +1,38 @@
 {
   "products": [
 
-    {
-      "id": 7,
-      "name": "Galaxy S21",
-      "desc": "Samsung Galaxy S21 2021 edition",
-      "price": 899,
-      "color": "#7c95eb",
-      "image": "https://images.samsung.com/is/image/samsung/p6pim/za/galaxy-s21/gallery/za-clear-cover-galaxy-s21-5g-ef-qg991ttegww-363168624?$720_576_PNG$"
-    },
+
     {
       "id": 8,
-      "name": "I Phone 14",
-      "desc": "I Phone 14 2024 edition",
-      "price": 3233,
+      "name": "Double Tie Shirt",
+      "desc": "White Premium Linen Look Double Tie Shirt",
+      "price": 875,
       "color": "#7c95eb",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUGeenbJRofOq1uDyacdPBsLT7K_GejUhQ-DWBuSqr5g&s"
+      "image": "https://cdn-img.prettylittlething.com/1/5/0/f/150fd0010a4c12b2e08117504b0f2cf654e96e18_cni5530_1.jpg?imwidth=1000"
+    },
+    {
+      "id": 9,
+      "name": "Leg Trouser",
+      "desc": "Premium Black Linen Look Wide Leg Trouser",
+      "price": 45,
+      "color": "#7c95eb",
+      "image": "https://cdn-img.prettylittlething.com/d/3/4/c/d34c7062f80e8d1ffdf415192b2c854572a8e054_cni5531_1.jpg?imwidth=1000"
+    },
+    {
+      "id": 10,
+      "name": "Mini Skirt",
+      "desc": "Pink Polka Dot Mini Skirt",
+      "price": 856,
+      "color": "#7c95eb",
+      "image": "https://cdn-img.prettylittlething.com/a/5/8/e/a58e39c04de5e8239f4d85c4858f631d87387a71_cni7987_1.jpg?imwidth=1000"
+    },
+    {
+      "id": 11,
+      "name": "Maxi Dress",
+      "desc": "Black Chiffon Floral Detail Maxi Dress",
+      "price": 874,
+      "color": "#7c95eb",
+      "image": "https://cdn-img.prettylittlething.com/7/9/4/0/794060f107f37527a3a532fa2d0d6e5459ab2c76_cni4355_1.jpg?imwidth=1000"
     }
   ]
 }

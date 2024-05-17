@@ -1,6 +1,5 @@
-import 'package:e_shopp/widgets/themes.dart';
+import 'package:e_shopp/services/AuthServices.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CatelogHeader extends StatefulWidget {
   @override
@@ -22,18 +21,25 @@ class _CatelogHeaderState extends State<CatelogHeader> {
               'E - Shop',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-               // color: context.theme.accentColor,
+                // color: context.theme.accentColor,
               ),
               textScaleFactor: 3,
             ),
-            ChangeThemeButton()
+            IconButton(
+                onPressed: () {
+                  AuthServices().logOut(context);
+                },
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.red,
+                ))
           ],
         ),
         Text(
           'Trending products',
           style: TextStyle(
-           // color: context.theme.accentColor,
-          ),
+              // color: context.theme.accentColor,
+              ),
           textScaleFactor: 1.5,
         ),
       ],
